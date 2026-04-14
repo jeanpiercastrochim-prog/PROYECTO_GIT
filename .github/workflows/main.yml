@@ -1,0 +1,19 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Verificar archivos
+        run: ls -la
+        
+      - name: Mensaje de éxito
+        run: echo "Pipeline ejecutado correctamente"
