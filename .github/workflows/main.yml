@@ -1,19 +1,13 @@
-name: CI Pipeline
+name: CI - Build y Test
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Verificar archivos
-        run: ls -la
-        
-      - name: Mensaje de éxito
-        run: echo "Pipeline ejecutado correctamente"
+      - uses: actions/checkout@v4
+      - name: Instalar dependencias
+        run: npm install
+      - name: Ejecutar tests
+        run: npm test
